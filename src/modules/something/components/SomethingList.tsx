@@ -16,6 +16,16 @@ export const SomethingList: React.FC = () => {
     }
   }
 
+  function onEdit(e: React.FocusEvent<HTMLParagraphElement>) {
+    const { id } = e.currentTarget.dataset;
+    const { textContent } = e.currentTarget;
+    if (!id || !textContent || !Boolean(textContent)) {
+      return;
+    }
+
+    dispatch(SomeActions.edit({ id: parseInt(id), title: textContent }));
+  }
+
   if (!items.length) {
     return <p>... nothing</p>;
   }
@@ -23,16 +33,23 @@ export const SomethingList: React.FC = () => {
   return (
     <>
       {items.map((item) => (
-        <span key={item.id}>
-          <p>{item.title}</p>
+        <div key={item.id}>
+          <span
+            style={{ marginRight: 20 }}
+            data-id={item.id}
+            contentEditable
+            onBlur={onEdit}
+          >
+            {item.title}
+          </span>
           <button
-            style={{ display: 'inline-block' }}
+            style={{ display: 'inline' }}
             onClick={onRemove}
             data-id={item.id}
           >
             Remove
           </button>
-        </span>
+        </div>
       ))}
     </>
   );
