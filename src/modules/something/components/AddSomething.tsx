@@ -30,12 +30,16 @@ export const AddSomething: React.FC = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="title">What are you adding?</label>
-      <div style={{ marginTop: 10, marginBottom: 20 }}>
+      <h3>
+        <label htmlFor="title">What are you adding?</label>
+      </h3>
+      <div style={{ marginTop: 10, marginBottom: 20, display: 'flex' }}>
         <input
+          id="title"
           name="title"
-          placeholder="Just type something in"
+          placeholder="Type something in..."
           type="text"
+          style={{ flex: 1, maxWidth: 500 }}
           value={title}
           onChange={onChange}
         />

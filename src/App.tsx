@@ -4,10 +4,9 @@ import React from 'react';
 
 export const App: React.FC = () => {
   return (
-    <>
+    <section style={{ padding: '5%', paddingBottom: 0, maxWidth: 1800 }}>
       <AddSomething />
-      <h3>Here's what you added so far</h3>
       <SomethingList />
-    </>
+    </section>
   );
 };

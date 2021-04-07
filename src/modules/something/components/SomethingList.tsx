@@ -32,25 +32,33 @@ export const SomethingList: React.FC = () => {
 
   return (
     <>
-      {items.map((item) => (
-        <div key={item.id}>
-          <span
-            style={{ marginRight: 20 }}
-            data-id={item.id}
-            contentEditable
-            onBlur={onEdit}
+      <h3>Here's what you have added so far...</h3>
+      {items
+        .sort((a, b) => a.id - b.id)
+        .map((item) => (
+          <div
+            key={item.id}
+            style={{
+              display: 'flex',
+              flex: 1,
+              justifyContent: 'space-between',
+              marginBottom: 20,
+            }}
           >
-            {item.title}
-          </span>
-          <button
-            style={{ display: 'inline' }}
-            onClick={onRemove}
-            data-id={item.id}
-          >
-            Remove
-          </button>
-        </div>
-      ))}
+            <strong>{item.id}.</strong>
+            <span
+              style={{ flex: 1, marginRight: 20, marginLeft: 20 }}
+              data-id={item.id}
+              contentEditable
+              onBlur={onEdit}
+            >
+              {item.title}
+            </span>
+            <button onClick={onRemove} data-id={item.id}>
+              &times;
+            </button>
+          </div>
+        ))}
     </>
   );
 };
