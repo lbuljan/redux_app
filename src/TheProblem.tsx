@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const Problematika: React.FC = () => {
+export const TheProblem: React.FC = () => {
   const [state, setState] = useState('');
   return (
     <section style={{ padding: '5%', paddingBottom: 0, maxWidth: 1800 }}>
