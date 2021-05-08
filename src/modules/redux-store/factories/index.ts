@@ -1,2 +1,2 @@
-export * from "./configureStore";
-export * from "./createAction";
+export * from './configureStore';
+export * from './createAction';
